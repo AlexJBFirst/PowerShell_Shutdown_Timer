@@ -29,12 +29,12 @@ If you managed to set the scripting policy to "RemoteSigned", then we can move o
 ## Running the script in different ways
 
 The easiest way is to run our script from the PowerShell command shell as follows:  
->D:\Scripts\PowerShellTimer.ps1  
->![image](https://github.com/AlexJBFirst/PowerShell_Shutdown_Timer/assets/155481723/7ecbb7ca-1f71-4d8c-80a9-425788514fd6)  
+>D:\Scripts\PowerShellShutdownTimer.ps1  
+>![image](https://github.com/AlexJBFirst/PowerShell_Shutdown_Timer/assets/155481723/6f2ba88a-301b-4051-8450-a396abaae3a4)  
 
 Or in the case when we have spaces in the directories where our script is saved:  
->& 'D:\Scripts\PowerShellTimer.ps1'  
->![image](https://github.com/AlexJBFirst/PowerShell_Shutdown_Timer/assets/155481723/6d325332-ab2c-4c55-bbd0-5783089b5fe6)  
+>& 'D:\Scripts\PowerShellShutdownTimer.ps1'  
+>![image](https://github.com/AlexJBFirst/PowerShell_Shutdown_Timer/assets/155481723/8f2275f9-623e-4ebf-ae53-9ab0c02950fa)  
 
 But this is not convenient.   
 "OldStyle" bat scripts allowed using the .bat\\.cmd extension to run our scripts with a double click, let's do the same, but for PowerShell.  
@@ -43,13 +43,13 @@ To do this, we need to:
 2) Create a shortcut to our script;  
 3) Modify the shortcut of our script as follows:  
 By clicking on "Properties" in the context menu of our shortcut, in the "Object" field, change its content to the following  
->Powershell -WindowStyle hidden -file "D:\Scripts\PowerShellTimer.ps1"  
->![image](https://github.com/AlexJBFirst/PowerShell_Shutdown_Timer/assets/155481723/2bd86005-4733-4620-aba8-b05b7b52ef84)  
+>Powershell -WindowStyle hidden -file "D:\Scripts\PowerShellShutdownTimer.ps1"  
+>![image](https://github.com/AlexJBFirst/PowerShell_Shutdown_Timer/assets/155481723/0f1d713d-53ca-42ff-b387-3f52e3745980)  
 
 ### Where:  
 ***PowerShell - command line interpreter  
 -WindowStyle hidden - used to make the powershell window hide in the system tray when the script is launched  
--file "D:\Scripts\PowerShellTimer.ps1" - In quotes, set the full path to the script***  
+-file "D:\Scripts\PowerShellShutdownTimer.ps1" - In quotes, set the full path to the script***  
 
 The working directory does not metter;  
 
@@ -60,18 +60,17 @@ The working directory does not metter;
 Below are the pictures of the timer  
 
 >Main Window  
-![image](https://github.com/AlexJBFirst/PowerShell_Shutdown_Timer/assets/155481723/5051da77-dcce-44df-bfe1-0a8c778a02ef)  
+>![image](https://github.com/AlexJBFirst/PowerShell_Shutdown_Timer/assets/155481723/9a830b8d-7302-43e9-984c-1989b65b6998)    
 >Timer Set  
-![image](https://github.com/AlexJBFirst/PowerShell_Shutdown_Timer/assets/155481723/0c7e1bb9-a2af-43bf-9b4b-e917a9ca9e1b)  
+>![image](https://github.com/AlexJBFirst/PowerShell_Shutdown_Timer/assets/155481723/0c7e1bb9-a2af-43bf-9b4b-e917a9ca9e1b)  
 >Timer Value  
-![image](https://github.com/AlexJBFirst/PowerShell_Shutdown_Timer/assets/155481723/7adc5176-baa6-423c-94eb-fceef0ed6a1d)  
+>![image](https://github.com/AlexJBFirst/PowerShell_Shutdown_Timer/assets/155481723/7adc5176-baa6-423c-94eb-fceef0ed6a1d)  
 >Precise timer Value  
-![image](https://github.com/AlexJBFirst/PowerShell_Shutdown_Timer/assets/155481723/41537522-64f2-4663-92c3-9e69f6dea8dc)  
+>![image](https://github.com/AlexJBFirst/PowerShell_Shutdown_Timer/assets/155481723/41537522-64f2-4663-92c3-9e69f6dea8dc)  
 >Timer Cancel  
-![image](https://github.com/AlexJBFirst/PowerShell_Shutdown_Timer/assets/155481723/d3966afe-14f4-4beb-b881-891ba7b2ad90)  
+>![image](https://github.com/AlexJBFirst/PowerShell_Shutdown_Timer/assets/155481723/d3966afe-14f4-4beb-b881-891ba7b2ad90)  
 >Shutting down the computer because the timer is set to 0
->![image](https://github.com/AlexJBFirst/PowerShell_Shutdown_Timer/assets/155481723/249c85ec-f02c-4ea2-a136-d2bfe26e00c1)  
-
+>![image](https://github.com/AlexJBFirst/PowerShell_Shutdown_Timer/assets/155481723/d056ddd7-de1e-454e-8c65-b6e92fea2b2e)  
 
 Enjoy!  
 
