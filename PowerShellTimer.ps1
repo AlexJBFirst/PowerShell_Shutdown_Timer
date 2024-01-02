@@ -95,7 +95,7 @@ function yesnomenu {
 	$label01.Size = New-Object System.Drawing.Size(350,90)
 	$label01.Font = New-Object System.Drawing.Font("Cascadia Mono",18,[System.Drawing.FontStyle]::Regular)
 	$label01.TextAlign = 'TopCenter'
-	$label01.Text = "Are you sure you want to turn off your computer"
+	$label01.Text = "Are you sure you want to turn off your computer?"
 	#######################################################################################################
 	$form1.AcceptButton = $okButton1
 	$form1.Controls.Add($okButton1)
