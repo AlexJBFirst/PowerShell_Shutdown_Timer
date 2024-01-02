@@ -28,7 +28,7 @@ function TimerText {
 function DoneMenu {
 	$DoneMenuForm = New-Object System.Windows.Forms.Form
 	$DoneMenuForm.ClientSize = New-Object System.Drawing.Size(211, 168)
-	$DoneMenuForm.Text = "PowerShell Timer"
+	$DoneMenuForm.Text = "Powershell Shutdown Timer"
 	$DoneMenuForm.BackColor = 'Black'
 	$DoneMenuForm.ForeColor = 'White'
 	$DoneMenuForm.Font = New-Object System.Drawing.Font("Times New Roman",22,[System.Drawing.FontStyle]::Bold)
@@ -64,7 +64,7 @@ function DoneMenu {
 
 function yesnomenu {
 	$form1 = New-Object System.Windows.Forms.Form
-	$form1.Text = 'PowerShell Timer'
+	$form1.Text = 'Powershell Shutdown Timer'
 	$form1.Size = New-Object System.Drawing.Size(400,210)
 	$Form1.Font = New-Object System.Drawing.Font("Times New Roman",22,[System.Drawing.FontStyle]::Bold)
 	$form1.BackColor = 'Black'
@@ -109,7 +109,7 @@ function yesnomenu {
 
 function PowerShellTimerMenu {
 	$form = New-Object System.Windows.Forms.Form
-	$form.Text = 'PowerShell Timer'
+	$form.Text = 'Powershell Shutdown Timer'
 	$form.Size = New-Object System.Drawing.Size(695,600)
 	$Form.Font = New-Object System.Drawing.Font("Times New Roman",22,[System.Drawing.FontStyle]::Bold)
 	$form.BackColor = 'Black'
@@ -275,7 +275,7 @@ function PowerShellTimerMenu {
 	$label1.Size = New-Object System.Drawing.Size(675,60)
 	$label1.Font = New-Object System.Drawing.Font("Cascadia Mono",12,[System.Drawing.FontStyle]::Regular)
 	$label1.TextAlign = 'TopCenter'
-	$label1.Text = "Welcome to the PowerShell Timer.`nThis timer will shut down your PC after a selected period of time.`nPlease select one of the options below."
+	$label1.Text = "Welcome to the Powershell Shutdown Timer.`nThis timer will shut down your PC after a selected period of time.`nPlease select one of the options below."
 	#######################################################################################################
 	$label2 = New-Object System.Windows.Forms.Label
 	$label2.Location = New-Object System.Drawing.Point(10,146)
