@@ -55,7 +55,7 @@ The working directory does not metter;
 
 4) Apply the changes to the shortcut and check that everything works by double-clicking on the created shortcut and make sure that the GUI of the timer appears.  
 
-## The graphical form of the timer
+## The GUI of the timer
 
 Below are the pictures of the timer  
 
