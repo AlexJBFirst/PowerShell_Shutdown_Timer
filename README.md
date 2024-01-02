@@ -1,4 +1,4 @@
-# Windows PowerShell timer with GUI
+# Windows PowerShell Shutdown timer with GUI
 
 Hello, everyone,  
 I'd like to present my little creation to your attention:  
