@@ -78,4 +78,4 @@ If you want to support me, I have a link to BuyMeaCoffee
 >https://www.buymeacoffee.com/alexwight4w
 
 Or QR code:  
->![bmc_qr](https://github.com/AlexJBFirst/PowerShell_Shutdown_Timer/assets/155481723/d98916df-d0ab-4701-956f-4a64f468104b)  
+>![bmc_qr (Phone)](https://github.com/AlexJBFirst/PowerShell_7z_Backup-and-Restore/assets/155481723/c74029e7-0ad8-461a-b1bb-1dc61e0077a1)  
