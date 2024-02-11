@@ -1,6 +1,7 @@
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
 [decimal]$Script:ShutdownTimer = '0'
+$Script:OutputEncoding = [System.Text.Encoding]::UTF8
 
 function TimerText {
 	$ShutdownTimerHours = "$([math]::Floor($ShutdownTimer/60))"
