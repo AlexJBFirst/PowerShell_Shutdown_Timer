@@ -129,7 +129,7 @@ function PowerShellTimerMenu {
 		else{
 			shutdown /a
 			shutdown.exe -s -t $($ShutdownTimer*60)
-			$DoneMenuText = "Done!`nTimer set for $([math]::round($ShutdownTimer/60,2)) hours!"
+			$Script:DoneMenuText = "Done!`nTimer set for $([math]::round($ShutdownTimer/60,2)) hours!"
 			DoneMenu
 		}
 	})
@@ -149,7 +149,7 @@ function PowerShellTimerMenu {
 		shutdown.exe -s -t 1800
 		$Script:ShutdownTimer = '0'
 		$Script:ShutdownTimer += '30'
-		$DoneMenuText = "Done!`nTimer set for $([math]::round($ShutdownTimer/60,2)) hour!"
+		$Script:DoneMenuText = "Done!`nTimer set for $([math]::round($ShutdownTimer/60,2)) hour!"
 		DoneMenu
 	})
 	#######################################################################################################
@@ -162,7 +162,7 @@ function PowerShellTimerMenu {
 		shutdown.exe -s -t 3600
 		$Script:ShutdownTimer = '0'
 		$Script:ShutdownTimer += '60'
-		$DoneMenuText = "Done!`nTimer set for $([math]::round($ShutdownTimer/60,2)) hour!"
+		$Script:DoneMenuText = "Done!`nTimer set for $([math]::round($ShutdownTimer/60,2)) hour!"
 		DoneMenu
 	})
 	#######################################################################################################
@@ -175,7 +175,7 @@ function PowerShellTimerMenu {
 		shutdown.exe -s -t 5400
 		$Script:ShutdownTimer = '0'
 		$Script:ShutdownTimer += '90'
-		$DoneMenuText = "Done!`nTimer set for $([math]::round($ShutdownTimer/60,2)) hours!"
+		$Script:DoneMenuText = "Done!`nTimer set for $([math]::round($ShutdownTimer/60,2)) hours!"
 		DoneMenu
 	})
 	#######################################################################################################
@@ -188,7 +188,7 @@ function PowerShellTimerMenu {
 		shutdown.exe -s -t 7200
 		$Script:ShutdownTimer = '0'
 		$Script:ShutdownTimer += '120'
-		$DoneMenuText = "Done!`nTimer set for $([math]::round($ShutdownTimer/60,2)) hours!"
+		$Script:DoneMenuText = "Done!`nTimer set for $([math]::round($ShutdownTimer/60,2)) hours!"
 		DoneMenu
 	})
 	#######################################################################################################
@@ -198,7 +198,7 @@ function PowerShellTimerMenu {
 	$CancelTimerButton.Text = 'Cancel Timer'
 	$CancelTimerButton.Add_Click({
 		shutdown /a
-		$DoneMenuText = 'Timer Canceled and set to 0!'
+		$Script:DoneMenuText = 'Timer Canceled and set to 0!'
 		$Script:ShutdownTimer = '0'
 		DoneMenu
 	})
