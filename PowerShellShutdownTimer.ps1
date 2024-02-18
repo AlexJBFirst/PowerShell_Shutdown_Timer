@@ -29,11 +29,12 @@ function TimerText {
 function DoneMenu {
 	$DoneMenuForm = New-Object System.Windows.Forms.Form
 	$DoneMenuForm.ClientSize = New-Object System.Drawing.Size(211, 168)
-	$DoneMenuForm.Text = "Powershell Shutdown Timer"
+	$DoneMenuForm.Text = "PowerShell Shutdown Timer"
 	$DoneMenuForm.BackColor = 'Black'
 	$DoneMenuForm.ForeColor = 'White'
 	$DoneMenuForm.Font = New-Object System.Drawing.Font("Times New Roman",22,[System.Drawing.FontStyle]::Bold)
 	$DoneMenuForm.StartPosition = 'CenterScreen'
+	$DoneMenuForm.FormBorderStyle = 'FixedDialog'
 	#######################################################################################################
 	$DoneMenuOKButton = New-Object System.Windows.Forms.Button
 	$DoneMenuOKButton.DialogResult = [System.Windows.Forms.DialogResult]::OK
@@ -45,7 +46,6 @@ function DoneMenu {
 		TimerText
 		$LabelCurrentTimerSet.Text = "Precise Timer Value is:`n$ShutdownTimer min`n`#`#`#`n $ShutdownTimerTextPrecise"
 	})
-	$DoneMenuOKButton.UseVisualStyleBackColor = $true
 	#######################################################################################################
 	$DoneMenulabel = New-Object System.Windows.Forms.Label
 	$DoneMenulabel.Font = New-Object System.Drawing.Font("Times New Roman", 21.75,[System.Drawing.FontStyle]::Bold,[System.Drawing.GraphicsUnit]::Point, 204)
@@ -65,16 +65,17 @@ function DoneMenu {
 
 function yesnomenu {
 	$form1 = New-Object System.Windows.Forms.Form
-	$form1.Text = 'Powershell Shutdown Timer'
-	$form1.Size = New-Object System.Drawing.Size(400,210)
+	$form1.Text = 'PowerShell Shutdown Timer'
+	$form1.ClientSize = New-Object System.Drawing.Size(370,165)
 	$Form1.Font = New-Object System.Drawing.Font("Times New Roman",22,[System.Drawing.FontStyle]::Bold)
 	$form1.BackColor = 'Black'
 	$form1.ForeColor = 'White'
 	$form1.StartPosition = 'CenterScreen'
+	$form1.FormBorderStyle = 'FixedDialog'
 	#######################################################################################################
 	$okButton1 = New-Object System.Windows.Forms.Button
-	$okButton1.Location = New-Object System.Drawing.Point(15,110)
-	$okButton1.Size = New-Object System.Drawing.Size(100,46)
+	$okButton1.Location = New-Object System.Drawing.Point(10,110)
+	$okButton1.Size = New-Object System.Drawing.Size(100,45)
 	$okButton1.Text = 'Yes'
 	$okButton1.DialogResult = [System.Windows.Forms.DialogResult]::OK
 	$okButton1.Add_Click({
@@ -83,8 +84,8 @@ function yesnomenu {
 	})
 	#######################################################################################################
 	$cancelButton1 = New-Object System.Windows.Forms.Button
-	$cancelButton1.Location = New-Object System.Drawing.Point(262,110)
-	$cancelButton1.Size = New-Object System.Drawing.Size(100,46)
+	$cancelButton1.Location = New-Object System.Drawing.Point(260,110)
+	$cancelButton1.Size = New-Object System.Drawing.Size(100,45)
 	$cancelButton1.Text = 'No'
 	$cancelButton1.DialogResult = [System.Windows.Forms.DialogResult]::Cancel
 	$okButton1.Add_Click({
@@ -110,110 +111,111 @@ function yesnomenu {
 
 function PowerShellTimerMenu {
 	$form = New-Object System.Windows.Forms.Form
-	$form.Text = 'Powershell Shutdown Timer'
-	$form.Size = New-Object System.Drawing.Size(695,600)
+	$form.Text = 'PowerShell Shutdown Timer'
+	$form.ClientSize = New-Object System.Drawing.Size(670,560)
 	$Form.Font = New-Object System.Drawing.Font("Times New Roman",22,[System.Drawing.FontStyle]::Bold)
 	$form.BackColor = 'Black'
 	$form.ForeColor = 'White'
 	$form.StartPosition = 'CenterScreen'
+	$form.FormBorderStyle = 'FixedDialog'
 	#######################################################################################################
 	$okButton = New-Object System.Windows.Forms.Button
-	$okButton.Location = New-Object System.Drawing.Point(15,500)
-	$okButton.Size = New-Object System.Drawing.Size(150,46)
+	$okButton.Location = New-Object System.Drawing.Point(10,500)
+	$okButton.Size = New-Object System.Drawing.Size(150,45)
 	$okButton.Text = 'OK'
 	$okButton.Add_Click({
 		if ($ShutdownTimer -eq '0'){
-			shutdown /a
+			shutdown /a 2|Out-Null
 			yesnomenu
 		}
 		else{
-			shutdown /a
+			shutdown /a 2|Out-Null
 			shutdown.exe -s -t $($ShutdownTimer*60)
-			$Script:DoneMenuText = "Done!`nTimer set for $([math]::round($ShutdownTimer/60,2)) hours!"
+			$DoneMenuText = "Done!`nTimer set for $([math]::round($ShutdownTimer/60,2)) hours!"
 			DoneMenu
 		}
 	})
 	#######################################################################################################
 	$cancelButton = New-Object System.Windows.Forms.Button
 	$cancelButton.Location = New-Object System.Drawing.Point(510,500)
-	$cancelButton.Size = New-Object System.Drawing.Size(150,46)
+	$cancelButton.Size = New-Object System.Drawing.Size(150,45)
 	$cancelButton.Text = 'Exit'
 	$cancelButton.DialogResult = [System.Windows.Forms.DialogResult]::Cancel
 	#######################################################################################################
 	$30minButton = New-Object System.Windows.Forms.Button
-	$30minButton.Location = New-Object System.Drawing.Point(15,85)
-	$30minButton.Size = New-Object System.Drawing.Size(150,46)
+	$30minButton.Location = New-Object System.Drawing.Point(10,85)
+	$30minButton.Size = New-Object System.Drawing.Size(150,45)
 	$30minButton.Text = '30 Min'
 	$30minButton.Add_Click({
-		shutdown /a
+		shutdown /a 2|Out-Null
 		shutdown.exe -s -t 1800
 		$Script:ShutdownTimer = '0'
 		$Script:ShutdownTimer += '30'
-		$Script:DoneMenuText = "Done!`nTimer set for $([math]::round($ShutdownTimer/60,2)) hour!"
+		$DoneMenuText = "Done!`nTimer set for $([math]::round($ShutdownTimer/60,2)) hour!"
 		DoneMenu
 	})
 	#######################################################################################################
 	$60minButton = New-Object System.Windows.Forms.Button
 	$60minButton.Location = New-Object System.Drawing.Point(180,85)
-	$60minButton.Size = New-Object System.Drawing.Size(150,46)
+	$60minButton.Size = New-Object System.Drawing.Size(150,45)
 	$60minButton.Text = '60 min'
 	$60minButton.Add_Click({
-		shutdown /a
+		shutdown /a 2|Out-Null
 		shutdown.exe -s -t 3600
 		$Script:ShutdownTimer = '0'
 		$Script:ShutdownTimer += '60'
-		$Script:DoneMenuText = "Done!`nTimer set for $([math]::round($ShutdownTimer/60,2)) hour!"
+		$DoneMenuText = "Done!`nTimer set for $([math]::round($ShutdownTimer/60,2)) hour!"
 		DoneMenu
 	})
 	#######################################################################################################
 	$90minButton = New-Object System.Windows.Forms.Button
 	$90minButton.Location = New-Object System.Drawing.Point(345,85)
-	$90minButton.Size = New-Object System.Drawing.Size(150,46)
+	$90minButton.Size = New-Object System.Drawing.Size(150,45)
 	$90minButton.Text = '90 min'
 	$90minButton.Add_Click({
-		shutdown /a
+		shutdown /a 2|Out-Null
 		shutdown.exe -s -t 5400
 		$Script:ShutdownTimer = '0'
 		$Script:ShutdownTimer += '90'
-		$Script:DoneMenuText = "Done!`nTimer set for $([math]::round($ShutdownTimer/60,2)) hours!"
+		$DoneMenuText = "Done!`nTimer set for $([math]::round($ShutdownTimer/60,2)) hours!"
 		DoneMenu
 	})
 	#######################################################################################################
 	$120minButton = New-Object System.Windows.Forms.Button
 	$120minButton.Location = New-Object System.Drawing.Point(510,85)
-	$120minButton.Size = New-Object System.Drawing.Size(150,46)
+	$120minButton.Size = New-Object System.Drawing.Size(150,45)
 	$120minButton.Text = '120 min'
 	$120minButton.Add_Click({
-		shutdown /a
+		shutdown /a 2|Out-Null
 		shutdown.exe -s -t 7200
 		$Script:ShutdownTimer = '0'
 		$Script:ShutdownTimer += '120'
-		$Script:DoneMenuText = "Done!`nTimer set for $([math]::round($ShutdownTimer/60,2)) hours!"
+		$DoneMenuText = "Done!`nTimer set for $([math]::round($ShutdownTimer/60,2)) hours!"
 		DoneMenu
 	})
 	#######################################################################################################
 	$CancelTimerButton = New-Object System.Windows.Forms.Button
 	$CancelTimerButton.Location = New-Object System.Drawing.Point(239,500)
-	$CancelTimerButton.Size = New-Object System.Drawing.Size(197,46)
+	$CancelTimerButton.Size = New-Object System.Drawing.Size(200,50)
 	$CancelTimerButton.Text = 'Cancel Timer'
 	$CancelTimerButton.Add_Click({
-		shutdown /a
-		$Script:DoneMenuText = 'Timer Canceled and set to 0!'
+		shutdown /a 2|Out-Null
+		$DoneMenuText = 'Timer Canceled and set to 0!'
 		$Script:ShutdownTimer = '0'
 		DoneMenu
 	})
 	#######################################################################################################
 	$ResetTimerButton = New-Object System.Windows.Forms.Button
 	$ResetTimerButton.Location = New-Object System.Drawing.Point(239,500)
-	$ResetTimerButton.Size = New-Object System.Drawing.Size(197,46)
+	$ResetTimerButton.Size = New-Object System.Drawing.Size(200,50)
 	$ResetTimerButton.Text = 'Cancel Timer'
 	$ResetTimerButton.Add_Click({
-		shutdown /a
+		shutdown /a 2|Out-Null
 	})
 	#######################################################################################################
 	$Plus1minButton = New-Object System.Windows.Forms.Button
-	$Plus1minButton.Location = New-Object System.Drawing.Point(40,202)
-	$Plus1minButton.Size = New-Object System.Drawing.Size(120,46)
+	$Plus1minButton.Location = New-Object System.Drawing.Point(40,200)
+	$Plus1minButton.Size = New-Object System.Drawing.Size(120,45)
 	$Plus1minButton.Text = '+1Min'
 	$Plus1minButton.Add_Click({
 		$Script:ShutdownTimer += '1'
@@ -222,8 +224,8 @@ function PowerShellTimerMenu {
 	})
 	#######################################################################################################
 	$Plus5minButton = New-Object System.Windows.Forms.Button
-	$Plus5minButton.Location = New-Object System.Drawing.Point(160,202)
-	$Plus5minButton.Size = New-Object System.Drawing.Size(120,46)
+	$Plus5minButton.Location = New-Object System.Drawing.Point(160,200)
+	$Plus5minButton.Size = New-Object System.Drawing.Size(120,45)
 	$Plus5minButton.Text = '+5Min'
 	$Plus5minButton.Add_Click({
 		$Script:ShutdownTimer += '5'
@@ -232,8 +234,8 @@ function PowerShellTimerMenu {
 	})
 	#######################################################################################################
 	$Plus10minButton = New-Object System.Windows.Forms.Button
-	$Plus10minButton.Location = New-Object System.Drawing.Point(280,202)
-	$Plus10minButton.Size = New-Object System.Drawing.Size(120,46)
+	$Plus10minButton.Location = New-Object System.Drawing.Point(280,200)
+	$Plus10minButton.Size = New-Object System.Drawing.Size(120,45)
 	$Plus10minButton.Text = '+10Min'
 	$Plus10minButton.Add_Click({
 		$Script:ShutdownTimer += '10'
@@ -242,8 +244,8 @@ function PowerShellTimerMenu {
 	})
 	#######################################################################################################
 	$Plus30minButton = New-Object System.Windows.Forms.Button
-	$Plus30minButton.Location = New-Object System.Drawing.Point(400,202)
-	$Plus30minButton.Size = New-Object System.Drawing.Size(120,46)
+	$Plus30minButton.Location = New-Object System.Drawing.Point(400,200)
+	$Plus30minButton.Size = New-Object System.Drawing.Size(120,45)
 	$Plus30minButton.Text = '+30Min'
 	$Plus30minButton.Add_Click({
 		$Script:ShutdownTimer += '30'
@@ -252,8 +254,8 @@ function PowerShellTimerMenu {
 	})
 	#######################################################################################################
 	$Plus60minButton = New-Object System.Windows.Forms.Button
-	$Plus60minButton.Location = New-Object System.Drawing.Point(520,202)
-	$Plus60minButton.Size = New-Object System.Drawing.Size(120,46)
+	$Plus60minButton.Location = New-Object System.Drawing.Point(520,200)
+	$Plus60minButton.Size = New-Object System.Drawing.Size(120,45)
 	$Plus60minButton.Text = '+60Min'
 	$Plus60minButton.Add_Click({
 		$Script:ShutdownTimer += '60'
@@ -263,7 +265,7 @@ function PowerShellTimerMenu {
 	#######################################################################################################
 	$AbortTimerButton = New-Object System.Windows.Forms.Button
 	$AbortTimerButton.Location = New-Object System.Drawing.Point(255,252)
-	$AbortTimerButton.Size = New-Object System.Drawing.Size(170,46)
+	$AbortTimerButton.Size = New-Object System.Drawing.Size(170,45)
 	$AbortTimerButton.Text = 'ResetTimer'
 	$AbortTimerButton.Add_Click({
 		$Script:ShutdownTimer = '0'
@@ -273,21 +275,21 @@ function PowerShellTimerMenu {
 	#######################################################################################################
 	$label1 = New-Object System.Windows.Forms.Label
 	$label1.Location = New-Object System.Drawing.Point(10,15)
-	$label1.Size = New-Object System.Drawing.Size(675,60)
+	$label1.Size = New-Object System.Drawing.Size(650,60)
 	$label1.Font = New-Object System.Drawing.Font("Cascadia Mono",12,[System.Drawing.FontStyle]::Regular)
 	$label1.TextAlign = 'TopCenter'
-	$label1.Text = "Welcome to the Powershell Shutdown Timer.`nThis timer will shut down your PC after a selected period of time.`nPlease select one of the options below."
+	$label1.Text = "Welcome to the PowerShell Shutdown Timer.`nThis timer will shut down your PC after a selected period of time.`nPlease select one of the options below."
 	#######################################################################################################
 	$label2 = New-Object System.Windows.Forms.Label
 	$label2.Location = New-Object System.Drawing.Point(10,146)
-	$label2.Size = New-Object System.Drawing.Size(675,60)
+	$label2.Size = New-Object System.Drawing.Size(650,60)
 	$label2.Font = New-Object System.Drawing.Font("Cascadia Mono",12,[System.Drawing.FontStyle]::Regular)
 	$label2.TextAlign = 'TopCenter'
 	$label2.Text = "Do you need to shut down your computer with a more precise timer?`nEnter the desired time right below."
 	#######################################################################################################
 	$LabelCurrentTimerSet = New-Object System.Windows.Forms.Label
 	$LabelCurrentTimerSet.Location = New-Object System.Drawing.Point(10,320)
-	$LabelCurrentTimerSet.Size = New-Object System.Drawing.Size(675,145)
+	$LabelCurrentTimerSet.Size = New-Object System.Drawing.Size(650,145)
 	$LabelCurrentTimerSet.Font = New-Object System.Drawing.Font("Cascadia Mono",24,[System.Drawing.FontStyle]::Regular)
 	$LabelCurrentTimerSet.TextAlign = 'TopCenter'
 	$LabelCurrentTimerSet.Text = "Precise Timer Value is:`n$ShutdownTimer min`n`#`#`#`n $([math]::round($ShutdownTimer/60,2)) hours"
