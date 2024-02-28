@@ -125,11 +125,11 @@ function PowerShellTimerMenu {
 	$okButton.Text = 'OK'
 	$okButton.Add_Click({
 		if ($ShutdownTimer -eq '0'){
-			shutdown /a 2|Out-Null
+			shutdown /a 2> $null
 			yesnomenu
 		}
 		else{
-			shutdown /a 2|Out-Null
+			shutdown /a 2> $null
 			shutdown.exe -s -t $($ShutdownTimer*60)
 			$DoneMenuText = "Done!`nTimer set for $([math]::round($ShutdownTimer/60,2)) hours!"
 			DoneMenu
@@ -147,7 +147,7 @@ function PowerShellTimerMenu {
 	$30minButton.Size = New-Object System.Drawing.Size(150,45)
 	$30minButton.Text = '30 Min'
 	$30minButton.Add_Click({
-		shutdown /a 2|Out-Null
+		shutdown /a 2> $null
 		shutdown.exe -s -t 1800
 		$Script:ShutdownTimer = '0'
 		$Script:ShutdownTimer += '30'
@@ -160,7 +160,7 @@ function PowerShellTimerMenu {
 	$60minButton.Size = New-Object System.Drawing.Size(150,45)
 	$60minButton.Text = '60 min'
 	$60minButton.Add_Click({
-		shutdown /a 2|Out-Null
+		shutdown /a 2> $null
 		shutdown.exe -s -t 3600
 		$Script:ShutdownTimer = '0'
 		$Script:ShutdownTimer += '60'
@@ -173,7 +173,7 @@ function PowerShellTimerMenu {
 	$90minButton.Size = New-Object System.Drawing.Size(150,45)
 	$90minButton.Text = '90 min'
 	$90minButton.Add_Click({
-		shutdown /a 2|Out-Null
+		shutdown /a 2> $null
 		shutdown.exe -s -t 5400
 		$Script:ShutdownTimer = '0'
 		$Script:ShutdownTimer += '90'
@@ -186,7 +186,7 @@ function PowerShellTimerMenu {
 	$120minButton.Size = New-Object System.Drawing.Size(150,45)
 	$120minButton.Text = '120 min'
 	$120minButton.Add_Click({
-		shutdown /a 2|Out-Null
+		shutdown /a 2> $null
 		shutdown.exe -s -t 7200
 		$Script:ShutdownTimer = '0'
 		$Script:ShutdownTimer += '120'
@@ -199,7 +199,7 @@ function PowerShellTimerMenu {
 	$CancelTimerButton.Size = New-Object System.Drawing.Size(200,50)
 	$CancelTimerButton.Text = 'Cancel Timer'
 	$CancelTimerButton.Add_Click({
-		shutdown /a 2|Out-Null
+		shutdown /a 2> $null
 		$DoneMenuText = 'Timer Canceled and set to 0!'
 		$Script:ShutdownTimer = '0'
 		DoneMenu
@@ -210,7 +210,7 @@ function PowerShellTimerMenu {
 	$ResetTimerButton.Size = New-Object System.Drawing.Size(200,50)
 	$ResetTimerButton.Text = 'Cancel Timer'
 	$ResetTimerButton.Add_Click({
-		shutdown /a 2|Out-Null
+		shutdown /a 2> $null
 	})
 	#######################################################################################################
 	$Plus1minButton = New-Object System.Windows.Forms.Button
